@@ -98,6 +98,9 @@
     "phpdocumentor/type-resolver": {
         "version": "1.6.1"
     },
+    "phpquery/phpquery": {
+        "version": "0.0.4"
+    },
     "phpstan/phpdoc-parser": {
         "version": "1.5.1"
     },

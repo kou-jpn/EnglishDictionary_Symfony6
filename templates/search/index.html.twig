@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Dictionary{% endblock %}
+
+{% block body %}
+<h1>English Dictionary</h1>
+<h2>{{ loginUser }}さんのページ</h2>
+    {{ form(form) }}
+
+<div class="search_result">
+    {{ word }}
+    {{ mean }}
+    <ul>
+        {% for image in searched_image %}
+            <li>
+                <img src="{{ image }}" width="150" height="100">
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<h2>Your Search History</h2>
+<ul>
+    {% for history in histories %}
+        <li>
+
+            <span class="history-word">{{ history.word }}</span>
+            <span class="history-mean">{{ history.mean }}</span>
+            {#  <span class="hitory-mean">{{ history.id }}</span> #}
+            <span class="history-username">{{ history.username }}</span>
+
+            <a>
+                <form method="POST" action="{{ path('app_deleteHistory') }}">
+                    <input type="hidden" name="history_id" id="history_id" value="{{ history.id }}"/>
+                    <button type="submit" class="addBtn2">delete</button>
+                </form>
+            </a>
+            <br>
+        </li>
+    {% endfor %}
+    <a href="{{ path('app_edit_dictionary_index') }}">Edit Dictionary</a>
+    <br>
+    <a href="{{ path('logout')}}">Logout</a>
+    {%  endblock %}
